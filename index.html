@@ -475,46 +475,58 @@
             font-style: italic;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 1rem;
-            }
-            
-            .data-layer,
-            .reflection-layer {
-                grid-column: 1;
-            }
-            
-            .crown-title {
-                font-size: 2rem;
-            }
-        }
+/* Mobile-first approach */
+.dashboard-grid, .metric-grid, .personnel-grid, .kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
 
-        @media (max-width: 768px) {
-            .metric-grid,
-            .personnel-grid,
-            .kpi-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .calendar-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
+/* Tablet and up */
+@media (min-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .metric-grid, .personnel-grid, .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .metric-grid, .personnel-grid, .kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large desktop and up */
+@media (min-width: 1440px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .metric-grid, .personnel-grid, .kpi-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
         /* Loading States */
         .loading {
