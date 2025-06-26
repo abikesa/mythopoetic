@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 VERBATIM TRANSGRESSION</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@200;400;800&display=swap');
+        
+        :root {
+            --void: #000000;
+            --blood: #ff0040;
+            --electric: #00ffff;
+            --gold: #ffd700;
+            --poison: #39ff14;
+            --plasma: #ff6b35;
+            --neural: #8a2be2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--void);
+            color: var(--electric);
+            overflow-x: hidden;
+            height: 100vh;
+            position: relative;
+            cursor: none;
+        }
+
+        /* GLITCH CURSOR */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--blood);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        /* NEURAL NETWORK BACKGROUND */
+        .neural-web {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* MAIN CONTAINER - BREATHING ENTITY */
+        .verbatim-container {
+            padding: 5vh 5vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 0, 64, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); filter: hue-rotate(0deg); }
+            50% { transform: scale(1.02); filter: hue-rotate(30deg); }
+        }
+
+        /* TITLE - SCREAMING HEADER */
+        .title-scream {
+            font-size: clamp(3rem, 8vw, 12rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--blood), var(--electric), var(--poison), var(--plasma));
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: psychedelic 3s ease-in-out infinite, textGlitch 0.3s linear infinite;
+            position: relative;
+            letter-spacing: -0.05em;
+        }
+
+        @keyframes psychedelic {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes textGlitch {
+            0%, 90%, 100% { transform: translate(0); }
+            10% { transform: translate(-2px, 1px); }
+            20% { transform: translate(2px, -1px); }
+            30% { transform: translate(-1px, 2px); }
+            40% { transform: translate(1px, -2px); }
+            50% { transform: translate(-2px, -1px); }
+            60% { transform: translate(2px, 1px); }
+            70% { transform: translate(-1px, -2px); }
+            80% { transform: translate(1px, 2px); }
+        }
+
+        /* LAYER SYSTEM - DECONSTRUCTED REALITY */
+        .layer-system {
+            display: grid;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .layer {
+            position: relative;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            transform-style: preserve-3d;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            line-height: 1.4;
+            overflow: hidden;
+        }
+
+        .layer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent
+            );
+            transition: left 0.5s ease;
+        }
+
+        .layer:hover::before {
+            left: 100%;
+        }
+
+        .layer:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateZ(20px);
+            border-color: var(--electric);
+            box-shadow: 
+                0 20px 40px rgba(0, 255, 255, 0.2),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+
+        /* EMOJI ENHANCEMENT - LIVING SYMBOLS */
+        .emoji {
+            display: inline-block;
+            font-size: 1.5em;
+            margin: 0 0.5rem;
+            animation: emojiPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+
+        @keyframes emojiPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(1.2) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(3deg); }
+        }
+
+        /* DATA LAYER - PRIMORDIAL CHAOS */
+        .layer-data {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.05));
+            border-color: var(--electric);
+            animation: dataFlow 4s ease-in-out infinite;
+        }
+
+        @keyframes dataFlow {
+            0%, 100% { 
+                background-position: 0% 0%;
+                filter: brightness(1);
+            }
+            50% { 
+                background-position: 100% 100%;
+                filter: brightness(1.3);
+            }
+        }
+
+        /* FLASK LAYER - HEART OF THE MACHINE */
+        .layer-flask {
+            background: linear-gradient(135deg, rgba(255, 0, 64, 0.1), rgba(255, 0, 64, 0.05));
+            border-color: var(--blood);
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* JINJA LAYER - METAMORPHIC VOID */
+        .layer-jinja {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(138, 43, 226, 0.05));
+            border-color: var(--neural);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .layer-jinja::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(
+                transparent,
+                rgba(138, 43, 226, 0.3),
+                transparent
+            );
+            animation: neural-spin 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes neural-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* HTML LAYER - ORGANIC STRUCTURE */
+        .layer-html {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 107, 53, 0.05));
+            border-color: var(--plasma);
+            animation: organic-wave 5s ease-in-out infinite;
+        }
+
+        @keyframes organic-wave {
+            0%, 100% { 
+                border-radius: 10px;
+                transform: skew(0deg);
+            }
+            50% { 
+                border-radius: 20px 10px 20px 10px;
+                transform: skew(1deg);
+            }
+        }
+
+        /* APP LAYER - TRANSCENDENT SYNTHESIS */
+        .layer-app {
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), rgba(57, 255, 20, 0.05));
+            border-color: var(--poison);
+            animation: synthesis 7s ease-in-out infinite;
+        }
+
+        @keyframes synthesis {
+            0%, 100% { 
+                filter: brightness(1) contrast(1);
+            }
+            33% { 
+                filter: brightness(1.2) contrast(1.1);
+            }
+            66% { 
+                filter: brightness(0.9) contrast(1.2);
+            }
+        }
+
+        /* BOLD TEXT - SCREAMING EMPHASIS */
+        strong {
+            color: var(--gold);
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--gold);
+            animation: emphasis-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes emphasis-glow {
+            0%, 100% { text-shadow: 0 0 10px var(--gold); }
+            50% { text-shadow: 0 0 20px var(--gold), 0 0 30px var(--gold); }
+        }
+
+        /* RESPONSIVE MADNESS */
+        @media (max-width: 768px) {
+            .verbatim-container {
+                padding: 2vh 3vw;
+            }
+            
+            .layer {
+                padding: 1.5rem;
+                font-size: clamp(0.9rem, 4vw, 1.2rem);
+            }
+            
+            .title-scream {
+                font-size: clamp(2rem, 12vw, 6rem);
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* ACCESSIBILITY WITH ATTITUDE */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+
+        /* SELECTION STYLING */
+        ::selection {
+            background: var(--blood);
+            color: var(--void);
+        }
+
+        ::-moz-selection {
+            background: var(--blood);
+            color: var(--void);
+        }
+
+        /* SCROLLBAR VIOLENCE */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--void);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--electric);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--blood);
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    
+    <canvas class="neural-web" id="neuralWeb"></canvas>
+    
+    <div class="verbatim-container">
+        <h1 class="title-scream">VERBATIM</h1>
+        
+        <div class="layer-system">
+            <div class="layer layer-data">
+                <span class="emoji">🌊</span>Data, Simulated/Collected<span class="emoji">📊</span><strong>Real-time Updates</strong><span class="emoji">🔄</span>: The app features real-time updates and animations, providing a dynamic and engaging user experience.
+            </div>
+            
+            <div class="layer layer-flask">
+                <span class="emoji">❤️</span>Flask, Individual/Heritage<span class="emoji">👤</span>/<strong>Personnel Directory</strong><span class="emoji">👥</span>: A searchable database of employees, including their roles, departments, and access levels.
+            </div>
+            
+            <div class="layer layer-jinja">
+                <span class="emoji">🌀</span>Jinja2, Templates/Dynamic<span class="emoji">🏃🏾</span>
+            </div>
+            
+            <div class="layer layer-html">
+                <span class="emoji">🐬</span>HTML, Grouped/Tasks<span class="emoji">👥</span>/<strong>Calendar</strong><span class="emoji">📅</span>: A calendar view of upcoming events, meetings, and deadlines.
+            </div>
+            
+            <div class="layer layer-app">
+                <span class="emoji">🔁</span>App, Notifications/Performance<span class="emoji">📲</span>/<strong>Dashboard</strong><span class="emoji">📊</span>: A centralized hub for monitoring key performance indicators (KPIs), including personnel, tasks, and events.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CURSOR VIOLENCE
+        const cursor = document.querySelector('.cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursor.style.transform = `translate(${cursorX - 10}px, ${cursorY - 10}px)`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // NEURAL NETWORK CANVAS
+        const canvas = document.getElementById('neuralWeb');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Neuron {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.life = Math.random();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life += 0.002;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                const alpha = Math.sin(this.life) * 0.5 + 0.5;
+                ctx.fillStyle = `rgba(0, 255, 255, ${alpha * 0.3})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        const neurons = Array.from({ length: 50 }, () => new Neuron());
+
+        function drawConnections() {
+            for (let i = 0; i < neurons.length; i++) {
+                for (let j = i + 1; j < neurons.length; j++) {
+                    const dx = neurons[i].x - neurons[j].x;
+                    const dy = neurons[i].y - neurons[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        const alpha = (150 - distance) / 150 * 0.1;
+                        ctx.strokeStyle = `rgba(255, 0, 64, ${alpha})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(neurons[i].x, neurons[i].y);
+                        ctx.lineTo(neurons[j].x, neurons[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            neurons.forEach(neuron => {
+                neuron.update();
+                neuron.draw();
+            });
+
+            drawConnections();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // LAYER INTERACTION CHAOS
+        const layers = document.querySelectorAll('.layer');
+        
+        layers.forEach((layer, index) => {
+            layer.addEventListener('mouseenter', () => {
+                layer.style.zIndex = 1000;
+                layers.forEach((otherLayer, otherIndex) => {
+                    if (otherIndex !== index) {
+                        otherLayer.style.filter = 'blur(2px) brightness(0.7)';
+                    }
+                });
+            });
+
+            layer.addEventListener('mouseleave', () => {
+                layer.style.zIndex = 'auto';
+                layers.forEach(otherLayer => {
+                    otherLayer.style.filter = 'none';
+                });
+            });
+
+            layer.addEventListener('click', () => {
+                layer.style.animation = 'none';
+                layer.offsetHeight; // Trigger reflow
+                layer.style.animation = null;
+                
+                // Add temporary chaos
+                layer.style.transform = `perspective(1000px) rotateX(${Math.random() * 20 - 10}deg) rotateY(${Math.random() * 20 - 10}deg) translateZ(${Math.random() * 50}px)`;
+                setTimeout(() => {
+                    layer.style.transform = '';
+                }, 500);
+            });
+        });
+
+        // PHILOSOPHICAL INTERFERENCE
+        const container = document.querySelector('.verbatim-container');
+        setInterval(() => {
+            const interference = Math.random();
+            if (interference < 0.1) {
+                container.style.filter = `hue-rotate(${Math.random() * 360}deg) contrast(${1 + Math.random() * 0.5})`;
+                setTimeout(() => {
+                    container.style.filter = '';
+                }, 100);
+            }
+        }, 2000);
+
+        // EMOJI CONSCIOUSNESS
+        const emojis = document.querySelectorAll('.emoji');
+        emojis.forEach(emoji => {
+            emoji.addEventListener('mouseenter', () => {
+                emoji.style.transform = `scale(2) rotate(${Math.random() * 360}deg)`;
+                emoji.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+            });
+            
+            emoji.addEventListener('mouseleave', () => {
+                emoji.style.transform = '';
+                emoji.style.filter = '';
+            });
+        });
+
+        // KONAMI CODE EASTER EGG
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.keyCode);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                document.body.style.animation = 'psychedelic 0.5s ease-in-out infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
